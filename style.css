@@ -119,3 +119,15 @@ em{font-style:normal;color:var(--green)}
 @media (max-width:520px){
   .hero{padding-top:45px}.hero h1{font-size:40px}.hero-points{display:grid;grid-template-columns:1fr;text-align:left;max-width:280px;margin-left:auto;margin-right:auto}.hero-actions{display:grid}.btn{width:100%}.platform-line{font-size:10px}.dash-shell{min-height:390px}.dash-sidebar{display:none}.dash-shell{grid-template-columns:1fr}.project-grid{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.why-grid>div{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}.why-grid>div:first-child{border-top:0}.process-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.footer-bottom{display:grid;gap:10px}.price{min-width:125px}.price strong{font-size:20px}.pricing-head{padding:22px 18px}.pricing-body{padding:20px 18px}
 }
+/* Donut Chart Legend - Color Fix */
+.legend i.legend-online {
+  background: #159c68 !important;
+}
+
+.legend i.legend-store {
+  background: #d8e7ef !important;
+}
+
+.legend i.legend-partner {
+  background: #f0b95e !important;
+}
