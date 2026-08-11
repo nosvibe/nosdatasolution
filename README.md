@@ -14,7 +14,7 @@ Website tĩnh gồm HTML + CSS + JavaScript, không cần backend.
 4. Chọn **Deploy from a branch**.
 5. Chọn branch `main` và thư mục `/root`.
 6. Lưu lại. Website sẽ có tại:
-   https://nosdatasolution.github.io/
+   https://nosvibe.github.io/nosdatasolution
 
 ## Thông tin liên hệ hiện tại
 
