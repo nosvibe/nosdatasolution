@@ -13,6 +13,11 @@ document.querySelectorAll('.main-nav a').forEach(link => {
   });
 });
 
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -20,18 +25,41 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, {threshold: 0.12});
+}, {
+  threshold: 0.12
+});
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
   anchor.addEventListener('click', e => {
-    const target = document.querySelector(anchor.getAttribute('href'));
+
+    const target = document.querySelector(
+      anchor.getAttribute('href')
+    );
+
     if (!target) return;
+
     e.preventDefault();
-    target.scrollIntoView({behavior:'smooth', block:'start'});
+
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+
   });
+
 });
+
+
 /* =========================================================
    DASHBOARD LIGHTBOX
    ========================================================= */
@@ -49,8 +77,6 @@ const closeButton =
   document.querySelector('.dashboard-lightbox-close');
 
 
-/* Kiểm tra Lightbox có tồn tại không */
-
 if (
   dashboardImages.length &&
   lightbox &&
@@ -58,11 +84,11 @@ if (
   closeButton
 ) {
 
-  /* =========================
-     OPEN
-     ========================= */
+  /* =======================================================
+     OPEN DASHBOARD
+     ======================================================= */
 
-  dashboardImages.forEach((dashboard) => {
+  dashboardImages.forEach(dashboard => {
 
     dashboard.addEventListener('click', () => {
 
@@ -72,8 +98,12 @@ if (
       if (!image) return;
 
       fullImage.src = image.src;
+
       fullImage.alt =
         image.alt || 'Dashboard';
+
+      /* Reset zoom mỗi lần mở */
+      fullImage.classList.remove('zoomed');
 
       lightbox.classList.add('active');
 
@@ -89,9 +119,9 @@ if (
   });
 
 
-  /* =========================
-     CLOSE FUNCTION
-     ========================= */
+  /* =======================================================
+     CLOSE
+     ======================================================= */
 
   function closeDashboard() {
 
@@ -102,6 +132,8 @@ if (
       'true'
     );
 
+    fullImage.classList.remove('zoomed');
+
     fullImage.src = '';
 
     document.body.style.overflow = '';
@@ -109,9 +141,9 @@ if (
   }
 
 
-  /* =========================
-     CLOSE BUTTON
-     ========================= */
+  /* =======================================================
+     CLOSE BUTTON ×
+     ======================================================= */
 
   closeButton.addEventListener(
     'click',
@@ -119,13 +151,13 @@ if (
   );
 
 
-  /* =========================
-     CLICK OUTSIDE
-     ========================= */
+  /* =======================================================
+     CLICK OUTSIDE IMAGE
+     ======================================================= */
 
   lightbox.addEventListener(
     'click',
-    (event) => {
+    event => {
 
       if (event.target === lightbox) {
         closeDashboard();
@@ -135,13 +167,29 @@ if (
   );
 
 
-  /* =========================
-     ESC
-     ========================= */
+  /* =======================================================
+     ZOOM IMAGE
+     ======================================================= */
+
+  fullImage.addEventListener(
+    'click',
+    event => {
+
+      event.stopPropagation();
+
+      fullImage.classList.toggle('zoomed');
+
+    }
+  );
+
+
+  /* =======================================================
+     ESC TO CLOSE
+     ======================================================= */
 
   document.addEventListener(
     'keydown',
-    (event) => {
+    event => {
 
       if (
         event.key === 'Escape' &&
