@@ -239,3 +239,99 @@ em{font-style:normal;color:var(--green)}
 }
 
 }
+/* =========================================================
+   DASHBOARD LIGHTBOX
+   ========================================================= */
+
+.dashboard-image img {
+  cursor: zoom-in;
+}
+
+.dashboard-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(5, 24, 39, .88);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+.dashboard-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dashboard-lightbox img {
+  max-width: 94vw;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35);
+}
+
+.dashboard-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.1);
+
+  color: #fff;
+
+  font-size: 28px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.dashboard-lightbox-close:hover {
+  background: rgba(255,255,255,.2);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 520px) {
+
+  .dashboard-lightbox {
+    padding: 15px;
+  }
+
+  .dashboard-lightbox img {
+    max-width: 96vw;
+    max-height: 82vh;
+  }
+
+  .dashboard-lightbox-close {
+    top: 12px;
+    right: 12px;
+  }
+
+}
