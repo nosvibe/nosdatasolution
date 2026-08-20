@@ -243,22 +243,21 @@ em{font-style:normal;color:var(--green)}
    DASHBOARD LIGHTBOX
    ========================================================= */
 
-.dashboard-image img {
-  cursor: zoom-in;
-}
-
 .dashboard-lightbox {
   position: fixed;
+
   inset: 0;
-  z-index: 9999;
+
+  z-index: 99999;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   padding: 30px;
 
-  background: rgba(5, 24, 39, .88);
+  background: rgba(4, 20, 34, .90);
 
   opacity: 0;
   visibility: hidden;
@@ -274,6 +273,8 @@ em{font-style:normal;color:var(--green)}
 }
 
 .dashboard-lightbox img {
+  display: block;
+
   max-width: 94vw;
   max-height: 90vh;
 
@@ -284,22 +285,26 @@ em{font-style:normal;color:var(--green)}
 
   border-radius: 8px;
 
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.35);
+  box-shadow: 0 25px 70px rgba(0,0,0,.4);
 }
 
 .dashboard-lightbox-close {
   position: absolute;
+
   top: 20px;
-  right: 25px;
+  right: 24px;
 
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
 
-  border: 1px solid rgba(255,255,255,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.45);
   border-radius: 50%;
 
-  background: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.10);
 
   color: #fff;
 
@@ -308,13 +313,15 @@ em{font-style:normal;color:var(--green)}
 
   cursor: pointer;
 
+  z-index: 2;
+
   transition:
     background .2s ease,
     transform .2s ease;
 }
 
 .dashboard-lightbox-close:hover {
-  background: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.20);
   transform: rotate(90deg);
 }
 
@@ -326,7 +333,7 @@ em{font-style:normal;color:var(--green)}
 
   .dashboard-lightbox img {
     max-width: 96vw;
-    max-height: 82vh;
+    max-height: 84vh;
   }
 
   .dashboard-lightbox-close {
