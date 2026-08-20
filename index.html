@@ -265,6 +265,7 @@
           <img
             src="marketing.jpg"
             alt="Dashboard Marketing"
+            onclick="openDashboard(this.src)"
           />
 
           <div class="dashboard-overlay">
@@ -293,7 +294,8 @@
         <div class="dashboard-image">
           <img
             src="revenue.jpg"
-            alt="Dashboard Doanh thu"
+            alt="Dashboard Doanh thu/Doanh số"
+            onclick="openDashboard(this.src)"
           />
 
           <div class="dashboard-overlay">
@@ -310,7 +312,7 @@
             </p>
           </div>
 
-          <span class="project-tag">Sales</span>
+          <span class="project-tag">Revenue/Sales</span>
         </div>
 
       </article>
@@ -323,6 +325,8 @@
           <img
             src="finance.jpg"
             alt="Dashboard Tài chính"
+            onclick="openDashboard(this.src)"
+            
           />
 
           <div class="dashboard-overlay">
@@ -352,6 +356,7 @@
           <img
             src="hr.jpg"
             alt="Dashboard Nhân sự"
+            onclick="openDashboard(this.src)"
           />
 
           <div class="dashboard-overlay">
@@ -412,5 +417,13 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Dashboard Lightbox -->
+<div id="dashboardLightbox" class="dashboard-lightbox" onclick="closeDashboard(event)">
+  <button class="dashboard-lightbox-close" onclick="closeDashboard(event)">
+    &times;
+  </button>
+
+  <img id="dashboardFullImage" src="" alt="Dashboard preview">
+</div>
 </body>
 </html>
