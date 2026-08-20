@@ -36,50 +36,107 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    DASHBOARD LIGHTBOX
    ========================================================= */
 
-function openDashboard(imageSrc) {
-  const lightbox = document.getElementById('dashboardLightbox');
-  const fullImage = document.getElementById('dashboardFullImage');
+document.addEventListener("DOMContentLoaded", function () {
 
-  fullImage.src = imageSrc;
+  const dashboardImages =
+    document.querySelectorAll(".dashboard-image");
 
-  lightbox.classList.add('active');
+  const lightbox =
+    document.getElementById("dashboardLightbox");
 
-  document.body.style.overflow = 'hidden';
-}
+  const fullImage =
+    document.getElementById("dashboardFullImage");
 
-function closeDashboard(event) {
+  const closeButton =
+    document.querySelector(".dashboard-lightbox-close");
 
-  // Nếu click vào chính ảnh thì không đóng
-  if (
-    event &&
-    event.target &&
-    event.target.id === 'dashboardFullImage'
-  ) {
-    return;
+
+  /* -----------------------------------------
+     MỞ DASHBOARD
+     ----------------------------------------- */
+
+  dashboardImages.forEach(function (dashboard) {
+
+    dashboard.addEventListener("click", function () {
+
+      const image =
+        dashboard.querySelector("img");
+
+      if (!image) return;
+
+      fullImage.src = image.src;
+      fullImage.alt = image.alt || "Dashboard";
+
+      lightbox.classList.add("active");
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow = "hidden";
+
+    });
+
+  });
+
+
+  /* -----------------------------------------
+     ĐÓNG DASHBOARD
+     ----------------------------------------- */
+
+  function closeLightbox() {
+
+    lightbox.classList.remove("active");
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    fullImage.src = "";
+
+    document.body.style.overflow = "";
+
   }
 
-  const lightbox = document.getElementById('dashboardLightbox');
 
-  lightbox.classList.remove('active');
+  /* Click nút X */
 
-  document.body.style.overflow = '';
-}
+  closeButton.addEventListener(
+    "click",
+    closeLightbox
+  );
 
 
-/* Đóng bằng phím ESC */
+  /* Click vùng tối bên ngoài ảnh */
 
-document.addEventListener('keydown', function(event) {
+  lightbox.addEventListener(
+    "click",
+    function (event) {
 
-  if (event.key === 'Escape') {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
 
-    const lightbox =
-      document.getElementById('dashboardLightbox');
-
-    if (lightbox.classList.contains('active')) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
     }
+  );
 
-  }
+
+  /* Phím ESC */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape" &&
+        lightbox.classList.contains("active")
+      ) {
+        closeLightbox();
+      }
+
+    }
+  );
 
 });
