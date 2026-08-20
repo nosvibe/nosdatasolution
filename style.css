@@ -272,18 +272,15 @@ em{font-style:normal;color:var(--green)}
 
 .dashboard-lightbox img {
   display: block;
-
   max-width: 94vw;
   max-height: 90vh;
-
   width: auto;
   height: auto;
-
   object-fit: contain;
-
   border-radius: 8px;
-
   box-shadow: 0 25px 70px rgba(0,0,0,.4);
+  cursor: zoom-in;
+  transition: transform .25s ease;
 }
 
 .dashboard-lightbox-close {
