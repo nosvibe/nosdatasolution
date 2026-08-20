@@ -152,7 +152,7 @@ em{font-style:normal;color:var(--green)}
   overflow: hidden;
 
   /* Thu nhỏ vùng preview */
-  width: 88%;
+  width: 60%;
   margin: 18px auto 0;
 
   aspect-ratio: 16 / 9;
