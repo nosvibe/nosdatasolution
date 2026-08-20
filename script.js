@@ -36,107 +36,123 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    DASHBOARD LIGHTBOX
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+const dashboardImages =
+  document.querySelectorAll('.dashboard-image');
 
-  const dashboardImages =
-    document.querySelectorAll(".dashboard-image");
+const lightbox =
+  document.getElementById('dashboardLightbox');
 
-  const lightbox =
-    document.getElementById("dashboardLightbox");
+const fullImage =
+  document.getElementById('dashboardFullImage');
 
-  const fullImage =
-    document.getElementById("dashboardFullImage");
-
-  const closeButton =
-    document.querySelector(".dashboard-lightbox-close");
+const closeButton =
+  document.querySelector('.dashboard-lightbox-close');
 
 
-  /* -----------------------------------------
-     MỞ DASHBOARD
-     ----------------------------------------- */
+/* Kiểm tra Lightbox có tồn tại không */
 
-  dashboardImages.forEach(function (dashboard) {
+if (
+  dashboardImages.length &&
+  lightbox &&
+  fullImage &&
+  closeButton
+) {
 
-    dashboard.addEventListener("click", function () {
+  /* =========================
+     OPEN
+     ========================= */
+
+  dashboardImages.forEach((dashboard) => {
+
+    dashboard.addEventListener('click', () => {
 
       const image =
-        dashboard.querySelector("img");
+        dashboard.querySelector('img');
 
       if (!image) return;
 
       fullImage.src = image.src;
-      fullImage.alt = image.alt || "Dashboard";
+      fullImage.alt =
+        image.alt || 'Dashboard';
 
-      lightbox.classList.add("active");
+      lightbox.classList.add('active');
 
       lightbox.setAttribute(
-        "aria-hidden",
-        "false"
+        'aria-hidden',
+        'false'
       );
 
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
 
     });
 
   });
 
 
-  /* -----------------------------------------
-     ĐÓNG DASHBOARD
-     ----------------------------------------- */
+  /* =========================
+     CLOSE FUNCTION
+     ========================= */
 
-  function closeLightbox() {
+  function closeDashboard() {
 
-    lightbox.classList.remove("active");
+    lightbox.classList.remove('active');
 
     lightbox.setAttribute(
-      "aria-hidden",
-      "true"
+      'aria-hidden',
+      'true'
     );
 
-    fullImage.src = "";
+    fullImage.src = '';
 
-    document.body.style.overflow = "";
+    document.body.style.overflow = '';
 
   }
 
 
-  /* Click nút X */
+  /* =========================
+     CLOSE BUTTON
+     ========================= */
 
   closeButton.addEventListener(
-    "click",
-    closeLightbox
+    'click',
+    closeDashboard
   );
 
 
-  /* Click vùng tối bên ngoài ảnh */
+  /* =========================
+     CLICK OUTSIDE
+     ========================= */
 
   lightbox.addEventListener(
-    "click",
-    function (event) {
+    'click',
+    (event) => {
 
       if (event.target === lightbox) {
-        closeLightbox();
+        closeDashboard();
       }
 
     }
   );
 
 
-  /* Phím ESC */
+  /* =========================
+     ESC
+     ========================= */
 
   document.addEventListener(
-    "keydown",
-    function (event) {
+    'keydown',
+    (event) => {
 
       if (
-        event.key === "Escape" &&
-        lightbox.classList.contains("active")
+        event.key === 'Escape' &&
+        lightbox.classList.contains('active')
       ) {
-        closeLightbox();
+
+        closeDashboard();
+
       }
 
     }
   );
 
-});
+}
