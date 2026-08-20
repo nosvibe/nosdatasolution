@@ -413,13 +413,28 @@
   </footer>
 
   <script src="script.js"></script>
-  <!-- Dashboard Lightbox -->
-<div id="dashboardLightbox" class="dashboard-lightbox" onclick="closeDashboard(event)">
-  <button class="dashboard-lightbox-close" onclick="closeDashboard(event)">
+ <!-- Dashboard Lightbox -->
+
+<div
+  id="dashboardLightbox"
+  class="dashboard-lightbox"
+  aria-hidden="true"
+>
+
+  <button
+    class="dashboard-lightbox-close"
+    type="button"
+    aria-label="Đóng"
+  >
     &times;
   </button>
 
-  <img id="dashboardFullImage" src="" alt="Dashboard preview">
+  <img
+    id="dashboardFullImage"
+    src=""
+    alt="Dashboard"
+  >
+
 </div>
 </body>
 </html>
